@@ -1,6 +1,5 @@
 import globals from 'globals';
-import eslintPluginNode, { rules } from 'eslint-plugin-node';
-import { plugins } from 'eslint-plugin-node/lib/configs/recommended-module';
+import eslintPluginNode from 'eslint-plugin-node';
 
 export default [
   {
