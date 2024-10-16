@@ -7,7 +7,7 @@
     "lint": "./node_modules/.bin/eslint",
     "start-server": "nodemon --exec babel-node --presets @babel/preset-env ./server.js",
     "dev": "nodemon --exec babel-node --presets @babel/preset-env",
-    "test": "./node_modules/.bin/mocha --require @babel/register --exit" 
+    "test": "./node_modules/.bin/mocha --require @babel/register --exit"
   },
   "author": "Saviour Gawugah",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "express": "^4.21.0",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.9.0",
+    "pickafood": "file:",
     "redis": "^4.7.0",
     "sha256": "^0.2.0"
   },
