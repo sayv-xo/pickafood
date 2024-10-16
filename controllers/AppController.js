@@ -7,7 +7,7 @@ class AppController{
     const redisStatus = redisClient.isAlive();
 
     if (dbStatus && redisStatus) {
-      return res.status(200).send('Restaurant is live!');
+      return res.status(200).send({  appStatus: 'live', redis: redisStatus, db: dbStatus });
     }
     return res.status(503).send({ error: 'Service temporarily Unavailable' });
   }
