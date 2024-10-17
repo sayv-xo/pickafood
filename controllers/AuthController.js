@@ -10,12 +10,11 @@ class AuthController {
       return res.status(401).send({ error: 'Unauthorized' });
     }
 
-    const authData = header.split(' ')[1];
-    if (!authData) {
-      return res.status(401).send({ error: 'Unauthorized' });
-    }
-
+    let authData = header.split(' ')[1];
+    const buffer = Buffer.from(authData, 'base64');
+    authData = buffer.toString('ascii');
     const userData = authData.split(':');
+
     if (userData.length !== 2) {
       return res.status(401).send({ error: 'Unauthorized' });
     }
