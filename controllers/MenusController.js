@@ -28,28 +28,4 @@ class MenuController {
   }
 }
 
-export default MenuController
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;
+export default MenuController;
