@@ -20,7 +20,7 @@ class DBClient {
     this.db = this.client.db(DB_NAME);
     this.usersCollection = this.db.collection('users');
     this.menuCollection = this.db.collection('menu');
-    this.ordersCOllection - this.db.collection('orders');
+    this.ordersCollection - this.db.collection('orders');
   }
 
   isAlive() {
