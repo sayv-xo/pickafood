@@ -1,16 +1,14 @@
-import dbClient from '../utils/db';
 import redisClient from '../utils/redis';
+import dbClient from '../utils/db';
 
-class AppController{
+class AppController {
   static getStatus(req, res) {
-    const dbStatus = dbClient.isAlive();
-    const redisStatus = redisClient.isAlive();
+    res.status(200).json({ redis: redisClient.isAlive(), db: dbClient.isAlive() });
+  }
 
-    if (dbStatus && redisStatus) {
-      return res.status(200).send({  appStatus: 'live', redis: redisStatus, db: dbStatus });
-    }
-    return res.status(503).send({ error: 'Service temporarily Unavailable' });
+  static async getStats(req, res) {
+    res.status(200).json({ users: await dbClient.nbUsers() });
   }
 }
 
-export default AppController;
+module.exports = AppController;

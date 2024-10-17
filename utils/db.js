@@ -5,7 +5,7 @@ const DB_PORT = process.env.DB_PORT || 27017;
 const DB_NAME = process.env.DB_NAME || 'pickafood';
 const DB_URL = `mongodb://${DB_HOST}:${DB_PORT}`;
 
-class DBCLient {
+class DBClient {
   constructor() {
     this.client = new MongoClient(DB_URL, { useUnifiedTopology: true });
     this.clientIsConnected = false;
@@ -32,5 +32,5 @@ class DBCLient {
   }
 }
 
-const dbClient = new DBCLient();
+const dbClient = new DBClient();
 export default dbClient;
