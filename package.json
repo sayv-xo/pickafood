@@ -7,17 +7,19 @@
     "lint": "./node_modules/.bin/eslint",
     "start-server": "nodemon --exec babel-node --presets @babel/preset-env ./server.js",
     "dev": "nodemon --exec babel-node --presets @babel/preset-env",
-    "test": "./node_modules/.bin/mocha --require @babel/register --exit" 
+    "test": "./node_modules/.bin/mocha --require @babel/register --exit"
   },
   "author": "Saviour Gawugah",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.3",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.9.0",
     "redis": "^4.7.0",
-    "sha256": "^0.2.0"
+    "sha256": "^0.2.0",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.7",
