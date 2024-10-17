@@ -9,6 +9,7 @@ const router = Router();
 router.get('/status', AppController.getStatus);
 
 router.post('/register', UsersController.postNew);
+router.get('/me', UsersController.getMe);
 
 router.get('/login', AuthController.login);
 router.get('/logout', AuthController.getDisconnect); 
