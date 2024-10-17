@@ -6,7 +6,6 @@ import dbClient from '../utils/db';
 class AuthController {
   static async login(req, res) {
     const header = req.header('Authorization');
-    console.log('header:', header);
     if (!header) {
       return res.status(401).send({ error: 'Unauthorized' });
     }
@@ -49,6 +48,17 @@ class AuthController {
       console.error('Error during login:', error);
       return res.status(500).send({ error: 'Internal Server Error' });
     }
+  }
+
+  static async getDisconnect(req, res) {
+    const token = req.header('X-Token');
+    const key = `auth_${token}`;
+    const id = await redisClient.get(key);
+    if (id) {
+      await redisClient.del(key);
+      return res.status(204).send({});
+    }
+    return res.status(401).send({ error: 'Unauthorized' });
   }
 }
 
