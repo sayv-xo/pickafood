@@ -16,6 +16,16 @@ class MenuController {
       return res.status(500).send({ error: 'Internal Server Error' });
     }
   }
+
+  static async getMenus(req, res) {
+    try {
+      const menus = await dbClient.menuCollection.find({}, { projection: { _id: 0, name: 1, price: 1, category: 1 } }).toArray();
+      return res.status(200).send(menus);
+    } catch (error) {
+      console.error('Error during getMenus:', error);
+      return res.status(500).send({ error: 'Internal Server Error' });
+    }
+  }
 }
 
 export default MenuController

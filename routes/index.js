@@ -14,5 +14,6 @@ router.get('/login', AuthController.login);
 router.get('/logout', AuthController.getDisconnect); 
 
 router.post('/menus', MenuController.createMenu);
+router.get('/menus', MenuController.getMenus);
 
 module.exports = router;
