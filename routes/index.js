@@ -8,6 +8,12 @@ import OrderController from '../controllers/OrderController';
 
 const router = Router();
 
+/**
+ * @swagger
+ * /status:
+ *  get: 
+ *   description: Returns the API status
+ */
 router.get('/status', AppController.getStatus);
 
 router.post('/register', UsersController.postNew);
