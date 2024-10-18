@@ -64,12 +64,30 @@ class OrderController {
     } catch (error) { 
       res.status(500).json({ message: 'Error creating order', error: error.message });
     }
-
-
   }
 
   static async getOrders(req, res) {
+    const token = req.header('X-Token');
+    if (!token) return res.status(401).send({ error: 'Unauthorized' });
 
+    const privateKey = process.env.JWT_SECRET || 'pickafood';
+
+    try {
+      const decoded = JwtService.verify(token, privateKey);
+      const key = `auth_${token}`;
+      const userId = await redisClient.get(key);
+            
+      if (!userId) {
+        return res.sendStatus(401);
+      }
+    
+      const idObject = new ObjectId(userId);
+      const orders = await dbClient.ordersCollection.find({ userId: idObject }, { projection: { userId: 0 } }).toArray();
+      res.status(200).json({ orders });
+    }
+    catch (error) {
+      res.status(500).json({ message: 'Error getting orders', error: error.message });
+    }
   }
 }
 
