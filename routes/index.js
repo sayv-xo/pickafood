@@ -21,6 +21,7 @@ router.get('/menus', MenuController.getMenus);
 
 
 router.post('/orders', OrderController.createOrder);
+router.get('/orders', OrderController.getOrders);
 
 
 module.exports = router;

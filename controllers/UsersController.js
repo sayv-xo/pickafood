@@ -39,7 +39,7 @@ class UsersController {
       password: sha256(password),
     };
     await dbClient.usersCollection.insertOne(newUser);
-    return res.status(201).send({ message: `User ${username} with id ${userId} created successfully.` });
+    return res.status(201).send({ message: `User ${username}  created successfully.` });
   }
 
   static async getMe(req, res) {
