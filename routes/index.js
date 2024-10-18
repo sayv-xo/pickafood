@@ -3,6 +3,8 @@ import AppController from '../controllers/AppController';
 import UsersController from '../controllers/UsersController';
 import AuthController from '../controllers/AuthController';
 import MenuController from '../controllers/MenusController';
+import OrderController from '../controllers/OrderController';
+
 
 const router = Router();
 
@@ -16,5 +18,9 @@ router.get('/logout', AuthController.getDisconnect);
 
 router.post('/menus', MenuController.createMenu);
 router.get('/menus', MenuController.getMenus);
+
+
+router.post('/orders', OrderController.createOrder);
+
 
 module.exports = router;
